@@ -1,0 +1,11 @@
+.header {
+    @apply flex relative items-center
+}
+
+.headRight {
+    @apply flex items-center gap-5 mr-9 ml-auto
+}
+
+.headLeft {
+    @apply ml-5 text-2xl font-medium mr-5
+}

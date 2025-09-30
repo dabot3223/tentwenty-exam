@@ -1,9 +1,10 @@
 import React from 'react'
 import LoginFormComponent from './LoginFormComponent'
+import styles from './left.module.css'
 
 const LeftScreenComponent = () => {
     return (
-        <div className='order-2 md:order-1 h-1/2 md:h-screen' >
+        <div className={styles['left-box']} >
             <LoginFormComponent />
         </div>
     )

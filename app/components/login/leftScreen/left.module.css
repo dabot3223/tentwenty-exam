@@ -1,0 +1,6 @@
+.left-box{
+    @apply order-2 md:order-1 mt-10 md:mt-0 md:h-screen
+}
+.left-box>div{
+    @apply h-full flex justify-center flex-col
+}

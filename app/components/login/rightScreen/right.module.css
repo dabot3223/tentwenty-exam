@@ -1,0 +1,12 @@
+.right-box{
+    @apply bg-[#1A56DB] order-1 md:order-2 h-96 md:h-screen
+}
+.right-box>div{
+    @apply text-white h-full flex justify-center flex-col p-5 md:p-10 
+}
+.right-box>div>h1{
+    @apply text-4xl font-semibold
+}
+.right-box>div>p{
+    @apply text-base font-thin pt-3
+}

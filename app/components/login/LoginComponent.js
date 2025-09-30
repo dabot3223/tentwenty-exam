@@ -1,11 +1,12 @@
 import React from 'react'
 import LeftScreenComponent from './leftScreen/LeftScreenComponent'
 import RightScreenComponent from './rightScreen/RightScreenComponent'
+import styles from './login.module.css'
 
 const LoginComponent = () => {
     return (
-        <section className="w-full h-screen">
-            <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+        <section className={styles.loginSection}>
+            <div >
                 <RightScreenComponent />
                 <LeftScreenComponent />
             </div>

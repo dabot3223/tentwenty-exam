@@ -1,29 +1,32 @@
-export async function POST(req, { params }) {
+import { NextResponse } from "next/server";
+import { db } from "../../../../lib/db";
 
-  const body = await req.json();
-  const API_URL = "https://vppayload.kamsoft.co.in/api";
-  const DOMAIN_NAME = process.env.NEXT_PUBLIC_DOMAIN;
-  console.log(searchParams,req.url,collection, endPoint,DOMAIN_NAME,body.domain === '' ? DOMAIN_NAME : body.domain)
-
+export async function GET() {
   try {
-    const result = await fetch(`${API_URL}/${collection}/${endPoint}`, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: method === 'POST' ? JSON.stringify({
-        ...body,
-        domain: body.domain === '' ? DOMAIN_NAME : body.domain
-      }) : undefined
-    });
-
-    const data = await result.json();
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    const [rows] = await db.query("SELECT id, name FROM users");
+    return NextResponse.json({ success: true, data: rows });
   } catch (error) {
     console.error(error);
-    return new Response(error.message, { status: error.status || 500 });
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+  }
+}
+
+export async function POST(req) {
+  try {
+    const body = await req.json();
+    const { email, pass } = body;
+
+    const [rows] = await db.query("select id,name,email from users where email = ? and pass = MD5(?)",
+      [email, pass]
+    );
+    console.log(rows)
+    if (rows.length!=0) {
+      return NextResponse.json( rows[0] );
+    }else{
+      return NextResponse.json({success: false,error:"Email or password is wrong"});
+    }
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
