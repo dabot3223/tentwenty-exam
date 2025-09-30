@@ -9,8 +9,8 @@ const LoginFormComponent = () => {
     console.log('Received values of form: ', values);
   };
   return (
-    <div className="h-screen flex justify-center flex-col" >
-      <div className='p-16' >
+    <div className="h-full flex justify-center flex-col" >
+      <div className='pl-16 pr-16' >
         <h4 className=' pb-5 font-semibold' >Welcome back</h4>
         <Form
           className='w-full'

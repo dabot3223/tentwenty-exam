@@ -3,7 +3,7 @@ import LoginFormComponent from './LoginFormComponent'
 
 const LeftScreenComponent = () => {
     return (
-        <div>
+        <div className='order-2 md:order-1 h-1/2 md:h-screen' >
             <LoginFormComponent />
         </div>
     )
