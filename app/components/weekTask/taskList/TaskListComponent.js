@@ -3,6 +3,8 @@ import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react'
 import DateListCard from './DateListCard';
 import NewTaskModal from './NewTaskModal';
+import { PlusOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 
 const TaskListComponent = ({ setHours, start, end, setIsLoading }) => {
 
@@ -66,6 +68,10 @@ const TaskListComponent = ({ setHours, start, end, setIsLoading }) => {
                 setNewTaskMod={setNewTaskMod}
                 newTaskDate={newTaskDate}
             />
+            {
+                taskData && Object.keys(taskData).length==0 &&
+                <Button onClick={()=>setNewTaskMod(true)} className='items-center' type='dashed'><PlusOutlined /> Add new task</Button>
+            }
         </div>
     )
 }
