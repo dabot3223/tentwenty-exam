@@ -55,7 +55,7 @@ const LoginFormComponent = () => {
         >
           <Form.Item
             name="email"
-            rules={[{ required: true, message: 'Please input your Email-Id!' }]}
+            rules={[{ required: true, message: 'Please input your Email-Id!' },{ type: 'email' }]}
             label={<span className='font-semibold' >Email</span>}
           >
             <Input placeholder="user@emai.com" />
