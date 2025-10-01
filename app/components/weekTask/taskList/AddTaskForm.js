@@ -7,7 +7,7 @@ const AddTaskForm = ({ setNewTaskMod }) => {
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
-        console.log("Form values:", values);
+        // console.log("Form values:", values);
     };
     return (
         <div>
@@ -40,12 +40,12 @@ const AddTaskForm = ({ setNewTaskMod }) => {
                     rules={[{ required: true, message: "Please select work type" }]}
                     tooltip="What kind of task did you do?"
                 >
-                    <Select 
+                    <Select
                         placeholder="Bug fixes"
                         options={[
-                            {value:'bg',label:"Bug fixes"},
-                            {value:'ft',label:"Feature"},
-                            {value:'dg',label:"Design"}
+                            { value: 'bg', label: "Bug fixes" },
+                            { value: 'ft', label: "Feature" },
+                            { value: 'dg', label: "Design" }
                         ]}
                     />
                 </Form.Item>

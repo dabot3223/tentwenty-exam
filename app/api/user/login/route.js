@@ -19,11 +19,11 @@ export async function POST(req) {
     const [rows] = await db.query("select id,name,email from users where email = ? and pass = MD5(?)",
       [email, pass]
     );
-    console.log(rows)
-    if (rows.length!=0) {
-      return NextResponse.json( rows[0] );
-    }else{
-      return NextResponse.json({success: false,error:"Email or password is wrong"});
+    // console.log(rows)
+    if (rows.length != 0) {
+      return NextResponse.json(rows[0]);
+    } else {
+      return NextResponse.json({ success: false, error: "Email or password is wrong" });
     }
   } catch (error) {
     console.error(error);

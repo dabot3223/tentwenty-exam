@@ -11,12 +11,12 @@ const TimesheetComponent = () => {
     const [dates, setDates] = React.useState([]);
     const [status, setStatus] = React.useState(null);
     const [weeklyData, setWeeklyData] = React.useState(null);
-    const [isLoading,setIsLoading] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
     const { data: session } = useSession();
     const getTimesheetData = async () => {
         try {
             const { data } = await axios.post('/api/timesheet/getWeeklydata', { uid: session?.user?.id, ...dates, status })
-            console.log(data)
+            // console.log(data)
             setWeeklyData(data.data)
             setIsLoading(false)
         } catch (error) {
@@ -29,7 +29,7 @@ const TimesheetComponent = () => {
             setIsLoading(true)
             getTimesheetData()
         }
-    }, [status, dates,session])
+    }, [status, dates, session])
     return (
         <Card title="Your Timesheets" >
             <TimesheetFilters setDates={setDates} setStatus={setStatus} />

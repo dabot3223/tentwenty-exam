@@ -12,7 +12,7 @@ const LoginFormComponent = () => {
   const router = useRouter()
 
   const onFinish = async (values) => {
-    console.log('Received values of form: ', values);
+    // console.log('Received values of form: ', values);
 
     setIsLoading(true);
 
@@ -27,7 +27,7 @@ const LoginFormComponent = () => {
 
 
     const res = await signIn("credentials", options);
-    console.log('res', res)
+    // console.log('res', res)
     if (res?.error) {
       setIsLoading(false);
       setErMsg(res?.error);

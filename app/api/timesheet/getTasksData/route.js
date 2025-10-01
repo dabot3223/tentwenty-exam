@@ -6,7 +6,7 @@ export async function POST(req) {
   try {
     const body = await req.json();
     const { uid, start, end } = body;
-    console.log(uid, start, end)
+    // console.log(uid, start, end)
 
     if (!uid) {
       return NextResponse.json(

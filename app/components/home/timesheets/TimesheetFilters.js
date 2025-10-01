@@ -7,7 +7,7 @@ dayjs.extend(isoWeek);
 
 const { RangePicker } = DatePicker;
 
-const TimesheetFilters = ({setDates,setStatus}) => {
+const TimesheetFilters = ({ setDates, setStatus }) => {
 
 
   const onDateChange = (values) => {
@@ -17,36 +17,36 @@ const TimesheetFilters = ({setDates,setStatus}) => {
     }
     const start = values[0].startOf('week').format('YYYY-MM-DD');
     const end = values[1].endOf('week').format('YYYY-MM-DD');
-    setDates({start, end});
-    console.log('Selected week range:', [start, end]);
+    setDates({ start, end });
+    // console.log('Selected week range:', [start, end]);
   };
 
-  const onSelectChange = (e)=>{
-    console.log(e)
+  const onSelectChange = (e) => {
+    // console.log(e)
     setStatus(e)
   }
   return (
     <div className='flex gap-2' >
       <Space direction="vertical" size={12}>
-      <RangePicker
-        picker="week"
-        format="YYYY-[W]WW"
-        onChange={onDateChange}
+        <RangePicker
+          picker="week"
+          format="YYYY-[W]WW"
+          onChange={onDateChange}
+          allowClear
+        />
+      </Space>
+
+      <Select
+        placeholder="Select status"
+        onChange={onSelectChange}
+        style={{ width: 200 }}
+        options={[
+          { value: 1, label: 'Complete' },
+          { value: 0, label: 'Incomplete' },
+          { value: 2, label: 'Missing' },
+        ]}
         allowClear
       />
-    </Space>
-    
-    <Select
-      placeholder="Select status"
-      onChange={onSelectChange}
-      style={{ width: 200 }}
-      options={[
-        { value: 1, label: 'Complete' },
-        { value: 0, label: 'Incomplete' },
-        { value: 2, label: 'Missing' },
-      ]}
-      allowClear
-    />
     </div>
   )
 }

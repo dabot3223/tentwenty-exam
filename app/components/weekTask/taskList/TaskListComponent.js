@@ -8,7 +8,7 @@ import { Button } from 'antd';
 
 const TaskListComponent = ({ setHours, start, end, setIsLoading }) => {
 
-    console.log(start, end)
+    // console.log(start, end)
     const { data: session } = useSession();
     const [taskData, setTaskData] = React.useState(null)
     const [newTaskMod, setNewTaskMod] = React.useState(null)
@@ -36,7 +36,7 @@ const TaskListComponent = ({ setHours, start, end, setIsLoading }) => {
                 acc[date].push(task);
                 return acc;
             }, {});
-            console.log(data.data, grouped)
+            // console.log(data.data, grouped)
             setTaskData(grouped)
 
             setIsLoading(false)
@@ -69,8 +69,8 @@ const TaskListComponent = ({ setHours, start, end, setIsLoading }) => {
                 newTaskDate={newTaskDate}
             />
             {
-                taskData && Object.keys(taskData).length==0 &&
-                <Button onClick={()=>setNewTaskMod(true)} className='items-center' type='dashed'><PlusOutlined /> Add new task</Button>
+                taskData && Object.keys(taskData).length == 0 &&
+                <Button onClick={() => setNewTaskMod(true)} className='items-center' type='dashed'><PlusOutlined /> Add new task</Button>
             }
         </div>
     )
