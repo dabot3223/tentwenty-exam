@@ -2,12 +2,15 @@ import axios from 'axios'
 import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react'
 import DateListCard from './DateListCard';
+import NewTaskModal from './NewTaskModal';
 
 const TaskListComponent = ({ setHours, start, end, setIsLoading }) => {
 
     console.log(start, end)
     const { data: session } = useSession();
     const [taskData, setTaskData] = React.useState(null)
+    const [newTaskMod, setNewTaskMod] = React.useState(null)
+    const [newTaskDate, setNewTaskDate] = React.useState(null)
 
     const getHours = (times) => {
         const totalMinutes = times.reduce((sum, time) => {
@@ -22,11 +25,11 @@ const TaskListComponent = ({ setHours, start, end, setIsLoading }) => {
     const getTaskList = async () => {
         try {
             const { data } = await axios.post('/api/timesheet/getTasksData', { uid: session?.user?.id, start, end })
-            
+
             setHours(getHours(data.data.map(v => v.time)))
 
             const grouped = data.data.reduce((acc, task) => {
-                const date = task.date.split("T")[0]; 
+                const date = task.date.split("T")[0];
                 if (!acc[date]) acc[date] = [];
                 acc[date].push(task);
                 return acc;
@@ -49,10 +52,20 @@ const TaskListComponent = ({ setHours, start, end, setIsLoading }) => {
     return (
         <div className='flex flex-col gap-2' >
             {
-                taskData && Object.keys(taskData).map((date,idx)=>{
-                    return <DateListCard key={idx} taskList={taskData[date]} date={date} />
+                taskData && Object.keys(taskData).map((date, idx) => {
+                    return <DateListCard
+                        setNewTaskDate={setNewTaskDate}
+                        setNewTaskMod={setNewTaskMod}
+                        key={idx}
+                        taskList={taskData[date]}
+                        date={date} />
                 })
             }
+            <NewTaskModal
+                newTaskMod={newTaskMod}
+                setNewTaskMod={setNewTaskMod}
+                newTaskDate={newTaskDate}
+            />
         </div>
     )
 }

@@ -4,7 +4,10 @@ import React from 'react'
 import TaskListCard from './TaskListCard'
 import { PlusOutlined } from '@ant-design/icons';
 
-const DateListCard = ({ taskList, date }) => {
+const DateListCard = ({ taskList, date,setNewTaskMod }) => {
+    const createNewModel = ()=>{
+        setNewTaskMod(true)
+    }
     return (
         <div className='flex w-full ' >
             <span className='w-16' >{moment(date).format("MMM DD")}</span>
@@ -14,7 +17,7 @@ const DateListCard = ({ taskList, date }) => {
                         return <TaskListCard key={id} task={task} />
                     })
                 }
-                <Button className='items-center' type='dashed'><PlusOutlined /> Add new task</Button>
+                <Button onClick={createNewModel} className='items-center' type='dashed'><PlusOutlined /> Add new task</Button>
             </div>
         </div>
     )
