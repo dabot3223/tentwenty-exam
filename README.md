@@ -1,9 +1,10 @@
 # tentwenty-exam
-# npm version 10.8.2
-# node version: 20.18.0
-# XAMPP vaesion v3.3.0
-# mysql version: mysql  Ver 15.1 Distrib 10.4.28-MariaDB, for Win64 (AMD64), source revision c8f2e9a5c0ac5905f28b050b7df5a9ffd914b7e7
-# php version: PHP 8.0.28 (cli)
+# versions
+ npm version 10.8.2
+ node version: 20.18.0
+ XAMPP vaesion v3.3.0
+ mysql version: mysql  Ver 15.1 Distrib 10.4.28-MariaDB, for Win64 (AMD64), source revision c8f2e9a5c0ac5905f28b050b7df5a9ffd914b7e7
+ php version: PHP 8.0.28 (cli)
 
 # instructions
 Create a database with database name: tt_exam
